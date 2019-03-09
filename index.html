@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="/styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+  <title>RPS Game</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <div v-if="notStarted">
+      <h1>Welcome to the Rock-Paper-Scissors Game!!</h1>
+      <button v-on:click="startGame">Start Game</button>
+    </div>
+    <div v-else>
+      <h2>It is Time for the Ultimate Showdown!!</h2>
+      <p>Currently {{playerPoints}}-{{computerPoints}}</p>
+      <div v-if="paperChoosen">
+        <div v-if="computerWeapon === 1">
+          <p>Paper vs Rock</p>
+          <p>You Win</p>
+          <p>Don't Quit Now!!</p>
+          <button v-on:click="rematchWin">Rematch</button>
+        </div>
+        <div v-else-if="computerWeapon === 2">
+          <p>Paper vs Paper</p>
+          <p>Draw</p>
+          <p>It Can't End on a Draw!!</p>
+          <button v-on:click="rematch">Rematch</button>
+        </div>
+        <div v-else-if="computerWeapon === 3">
+          <p>Paper vs Scissors</p>
+          <p>You Lose</p>
+          <p>Will You Accept Defeat?!!</p>
+          <button v-on:click="rematchLose">Rematch</button>
+        </div>
+      </div>
+      <div v-else-if="rockChoosen">
+        <div v-if="computerWeapon === 1">
+          <p>Rock vs Rock</p>
+          <p>Draw</p>
+          <p>It Can't End on a Draw!!</p>
+          <button v-on:click="rematch">Rematch</button>
+        </div>
+        <div v-else-if="computerWeapon === 2">
+          <p>Rock vs Paper</p>
+          <p>You Lose</p>
+          <p>Will You Accept Defeat?!!</p>
+          <button v-on:click="rematchLose">Rematch</button>
+        </div>
+        <div v-else-if="computerWeapon === 3">
+          <p>Rock vs Scissors</p>
+          <p>You Win</p>
+          <p>Don't Quit Now!!</p>
+          <button v-on:click="rematchWin">Rematch</button>
+        </div>
+      </div>
+      <div v-else-if="scissorsChoosen">
+        <div v-if="computerWeapon === 1">
+          <p>Scissors vs Rock</p>
+          <p>You Lose</p>
+          <p>Will You Accept Defeat?!!</p>
+          <button v-on:click="rematchLose">Rematch</button>
+        </div>
+        <div v-else-if="computerWeapon === 2">
+          <p>Scissors vs Paper</p>
+          <p>You Win</p>
+          <p>Don't Quit Now!!</p>
+          <button v-on:click="rematchWin">Rematch</button>
+        </div>
+        <div v-else-if="computerWeapon === 3">
+          <p>Scissors vs Scissors</p>
+          <p>Draw</p>
+          <p>It Can't End on a Draw!!</p>
+          <button v-on:click="rematch">Rematch</button>
+        </div>
+      </div>
+      <div v-else>
+        <p>
+          <button v-on:click="chooseRock">Rock</button>
+          <button v-on:click="chooseScissors">Scissors</button>
+          <button v-on:click="choosePaper">Paper</button>
+        </p>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="/script.js"></script>
+  <script src="moment.js"></script>
+  <script src="https://unpkg.com/vue-star-rating/dist/star-rating.min.js"></script>
+  <footer class="footer">
+        <a href="https://github.com/BYU-CS-260-Winter-2019/lab-3-travisdb94">Github link</a>
+  </footer>
+</body>
